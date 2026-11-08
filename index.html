@@ -8,7 +8,123 @@
 
     <title>Brandon Förderer</title>
 
-    <link rel="stylesheet" href="/style.css">
+    <style>
+
+        /* GENERAL */
+
+        body {
+            background: #f7f6f2;
+            color: #222;
+            font-family: Georgia, "Times New Roman", serif;
+            margin: 0;
+            padding: 0 10%;
+        }
+
+        a {
+            color: #222;
+            text-decoration: none;
+        }
+
+
+        /* HEADER */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #ddd9d1;
+        }
+
+        .logo {
+            font-size: 18px;
+            color: #222;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #222;
+        }
+
+
+        /* MAIN */
+
+        main {
+            max-width: 700px;
+            padding: 100px 0;
+        }
+
+        .intro p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 100px;
+            padding: 30px 0;
+            border-top: 1px solid #ddd9d1;
+            font-size: 14px;
+            color: #666;
+        }
+
+        footer a {
+            color: #666;
+        }
+
+        footer a:hover {
+            color: #222;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 0 6%;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            main {
+                padding: 70px 0;
+            }
+
+            .intro p {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
