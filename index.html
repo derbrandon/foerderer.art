@@ -1,33 +1,22 @@
-
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandon Förderer</title>
-    <style>
-        body {
-            background: #f7f6f2;
-            color: #222;
-            font-family: Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 80px 10%;
-        }
-
-        h1 {
-            font-size: 48px;
-            font-weight: 400;
-        }
-
-        p {
-            color: #666;
-            font-size: 18px;
-        }
-    </style>
+    <title>Flappy Bird JS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Brandon Förderer</h1>
-    <p>Kunstgeschichte · Philosophie · Architektur</p>
+    <div id="game-container">
+        <div id="score-board">Score: <span id="score">0</span></div>
+        <canvas id="gameCanvas" width="360" height="500"></canvas>
+        <div id="game-over-text" class="hidden">Game Over<br><span style="font-size: 16px;">Press Space to Restart</span></div>
+    </div>
+    <script src="script.js"></script>
+comment your best score!
+  </body>
+</html>
+
     <p>Welcome to my personal website.</p>
 </body>
 </html>
