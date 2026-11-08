@@ -1,18 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flappy Bird JS</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="game-container">
-        <div id="score-board">Score: <span id="score">0</span></div>
-        <canvas id="gameCanvas" width="360" height="500"></canvas>
-        <div id="game-over-text" class="hidden">Game Over<br><span style="font-size: 16px;">Press Space to Restart</span></div>
-    </div>
-    <script src="script.js"></script>
-comment your best score!
-  </body>
-</html>
+
