@@ -12,9 +12,44 @@
         body {
             background: #f7f6f2;
             color: #222;
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: Georgia, "Times New Roman", serif;
             margin: 0;
-            padding: 100px 10%;
+            padding: 0 10%;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #ddd9d1;
+        }
+
+        .logo {
+            font-size: 18px;
+            text-decoration: none;
+            color: #222;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #222;
+        }
+
+        main {
+            max-width: 700px;
+            padding: 100px 0;
         }
 
         h1 {
@@ -23,29 +58,58 @@
             margin-bottom: 40px;
         }
 
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+        }
+
         p {
             color: #666;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 650px;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        section {
+            padding: 40px 0;
         }
 
         a {
             color: #222;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
         }
 
         .game {
-            margin-top: 80px;
+            padding: 40px 0;
         }
 
         footer {
-            margin-top: 120px;
+            margin-top: 100px;
+            padding: 30px 0;
+            border-top: 1px solid #ddd9d1;
             font-size: 14px;
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
         }
     </style>
 
@@ -53,9 +117,26 @@
 
 <body>
 
-    <!-- INTRODUCTION -->
+    <!-- HEADER -->
 
-    <main>
+    <header>
+
+        <a class="logo" href="/">Brandon Förderer</a>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#photography">Photography</a>
+            <a href="/flappy-bird/">Flappy Bird</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+
+    <main id="home">
 
         <h1>Brandon Förderer</h1>
 
@@ -86,13 +167,39 @@
     </main>
 
 
-    <!-- GAME -->
+    <!-- PROJECTS -->
 
-    <section class="game">
+    <section id="projects">
 
-        <a href="/flappy-bird/">
-            Play Flappy Bird
-        </a>
+        <h2>Projects</h2>
+
+        <p>Selected academic and personal projects.</p>
+
+    </section>
+
+
+    <!-- PHOTOGRAPHY -->
+
+    <section id="photography">
+
+        <h2>Photography</h2>
+
+        <p>A collection of personal photographic works.</p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2>Contact</h2>
+
+        <p>
+            <a href="mailto:brandon@foerderer.art">
+                brandon@foerderer.art
+            </a>
+        </p>
 
     </section>
 
@@ -101,12 +208,9 @@
 
     <footer>
 
-        <a href="/impressum.html">
-            Impressum
-        </a>
+        <a href="/impressum.html">Impressum</a>
 
     </footer>
 
 </body>
-
 </html>
