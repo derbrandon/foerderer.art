@@ -14,17 +14,20 @@
             color: #222;
             font-family: Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 80px 10%;
+            padding: 100px 10%;
         }
 
         h1 {
             font-size: 48px;
             font-weight: 400;
+            margin-bottom: 40px;
         }
 
         p {
             color: #666;
             font-size: 18px;
+            line-height: 1.8;
+            max-width: 650px;
         }
 
         a {
@@ -36,12 +39,13 @@
             text-decoration: underline;
         }
 
+        .game {
+            margin-top: 80px;
+        }
+
         footer {
-            margin-top: 100px;
+            margin-top: 120px;
             font-size: 14px;
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
         }
     </style>
 
@@ -49,17 +53,53 @@
 
 <body>
 
-    <h1>Brandon Förderer</h1>
+    <!-- INTRODUCTION -->
 
-    <p>Kunstgeschichte · Philosophie · Architektur</p>
+    <main>
 
-    <p>Welcome to my personal website.</p>
+        <h1>Brandon Förderer</h1>
 
-    <footer>
+        <p>
+            Hallo, mein Name ist Brandon Förderer.
+            Ich studiere Kunstgeschichte und Philosophie
+            im Bachelor an der Goethe-Universität Frankfurt am Main.
+        </p>
 
-        <a href="https://foerderer.art/flappy-bird/">
+        <p>
+            Mit dieser Website möchte ich einen digitalen Ort schaffen,
+            an dem ich Projekte, Gedanken, Ideen und Fantasien sammle
+            und mit der Öffentlichkeit teile.
+        </p>
+
+        <p>
+            Themen, die mich im Alltag, im Beruf und an der Universität
+            beschäftigen, sollen hier miteinander in Verbindung treten,
+            sich gegenseitig beeinflussen und neue Perspektiven eröffnen.
+        </p>
+
+        <p>
+            Die Website versteht sich als offenes Archiv meiner Interessen
+            und Arbeiten – ein Versuch, unterschiedliche Gedanken und
+            kreative Ansätze in einem gemeinsamen Zusammenhang zusammenzuführen.
+        </p>
+
+    </main>
+
+
+    <!-- GAME -->
+
+    <section class="game">
+
+        <a href="/flappy-bird/">
             Play Flappy Bird
         </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
 
         <a href="/impressum.html">
             Impressum
@@ -68,4 +108,5 @@
     </footer>
 
 </body>
+
 </html>
