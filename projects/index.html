@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects — Brandon Förderer</title>
+
+    <style>
+
+        body {
+            background: #f7f6f2;
+            color: #222;
+            font-family: Georgia, "Times New Roman", serif;
+            margin: 0;
+            padding: 0 10%;
+        }
+
+        a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #ddd9d1;
+        }
+
+        .logo {
+            font-size: 18px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 14px;
+            color: #666;
+        }
+
+        nav a:hover {
+            color: #222;
+        }
+
+        main {
+            max-width: 900px;
+            padding: 100px 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 23px;
+            font-weight: 400;
+        }
+
+        p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .project {
+            padding: 30px 0;
+            border-bottom: 1px solid #ddd9d1;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        .project-title span {
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 100px;
+            padding: 30px 0;
+            border-top: 1px solid #ddd9d1;
+            font-size: 14px;
+            color: #666;
+        }
+
+        footer a {
+            color: #666;
+        }
+
+        footer a:hover {
+            color: #222;
+        }
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 0 6%;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 16px;
+            }
+
+            main {
+                padding: 70px 0;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .project-title {
+                flex-direction: column;
+                gap: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a class="logo" href="/">Brandon Förderer</a>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/projects/">Projects</a>
+            <a href="/photography/">Photography</a>
+            <a href="/flappy-bird/">Flappy Bird</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- PROJECTS -->
+
+    <main>
+
+        <h1>Projects</h1>
+
+        <p>
+            A collection of academic and personal projects
+            exploring art, architecture, history and ideas.
+        </p>
+
+
+        <section class="project">
+
+            <div class="project-title">
+                <h2>Centre Le Corbusier</h2>
+                <span>Zurich</span>
+            </div>
+
+            <p>
+                An academic project exploring the architecture
+                and spatial conception of the Centre Le Corbusier.
+            </p>
+
+        </section>
+
+
+        <section class="project">
+
+            <div class="project-title">
+                <h2>St. Aposteln</h2>
+                <span>Cologne</span>
+            </div>
+
+            <p>
+                An architectural and art historical examination
+                of the church of St. Aposteln in Cologne.
+            </p>
+
+        </section>
+
+
+        <section class="project">
+
+            <div class="project-title">
+                <h2>Dadaism</h2>
+                <span>Publication</span>
+            </div>
+
+            <p>
+                A magazine article exploring Dadaism,
+                its artistic practices and historical context.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>© Brandon Förderer</span>
+
+        <a href="/impressum.html">Impressum</a>
+
+    </footer>
+
+</body>
+</html>
