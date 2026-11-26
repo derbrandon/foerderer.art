@@ -1,1 +1,664 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fotografische Arbeiten und Beobachtungen von Brandon Förderer.">
+  <title>Photography — Brandon Förderer</title>
+
+  <style>
+    :root {
+      --background: #F8FEE6;
+      --accent: #83FA6C;
+      --grid-line: #E1E3DC;
+      --black: #000000;
+      --font: Menlo, Monaco, monospace;
+      --grid-unit: 40px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--black);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .site-wrapper {
+      min-height: 100vh;
+      padding: 0 40px;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: var(--grid-unit) var(--grid-unit);
+    }
+
+    /* HEADER */
+
+    header {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      min-height: 80px;
+      border-bottom: 1px solid var(--black);
+      background: var(--background);
+    }
+
+    .logo {
+      grid-column: 1 / 5;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    nav {
+      grid-column: 6 / 13;
+      display: flex;
+      justify-content: flex-end;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* MAIN */
+
+    main {
+      min-height: calc(100vh - 140px);
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+
+    .page-intro {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      margin-bottom: 48px;
+    }
+
+    .page-title {
+      grid-column: 1 / 6;
+      margin: 0;
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    .page-description {
+      grid-column: 8 / 13;
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .image-count {
+      display: block;
+      margin-top: 12px;
+      color: #666;
+      font-size: 11px;
+    }
+
+    /* PHOTO GRID */
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 40px 20px;
+      align-items: start;
+    }
+
+    .photo {
+      position: relative;
+      margin: 0;
+      cursor: zoom-in;
+    }
+
+    .photo button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 180ms ease;
+    }
+
+    .photo button:hover img {
+      opacity: 0.88;
+    }
+
+    .photo figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 8px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    /* Individual image positions */
+
+    .photo-1 {
+      grid-column: 1 / 5;
+    }
+
+    .photo-1 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-2 {
+      grid-column: 7 / 11;
+      margin-top: 100px;
+    }
+
+    .photo-2 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-3 {
+      grid-column: 2 / 7;
+      margin-top: 20px;
+    }
+
+    .photo-3 img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .photo-4 {
+      grid-column: 9 / 13;
+      margin-top: 20px;
+    }
+
+    .photo-4 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-5 {
+      grid-column: 3 / 8;
+      margin-top: 40px;
+    }
+
+    .photo-5 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-6 {
+      grid-column: 9 / 13;
+      margin-top: 100px;
+    }
+
+    .photo-6 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-7 {
+      grid-column: 1 / 6;
+      margin-top: 20px;
+    }
+
+    .photo-7 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-8 {
+      grid-column: 7 / 12;
+      margin-top: 100px;
+    }
+
+    .photo-8 img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .photo-9 {
+      grid-column: 3 / 10;
+      margin-top: 20px;
+    }
+
+    .photo-9 img {
+      aspect-ratio: 4 / 3;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.88);
+    }
+
+    .lightbox.open {
+      display: flex;
+      animation: fadeIn 180ms ease;
+    }
+
+    .lightbox-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin-top: 12px;
+      color: white;
+      font-size: 11px;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 30px;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-family: var(--font);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* FOOTER */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 60px;
+      border-top: 1px solid var(--black);
+      background: var(--background);
+      font-size: 11px;
+    }
+
+    footer a {
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 900px) {
+      .site-wrapper {
+        padding: 0 24px;
+      }
+
+      header {
+        grid-template-columns: repeat(8, 1fr);
+      }
+
+      .logo {
+        grid-column: 1 / 4;
+      }
+
+      nav {
+        grid-column: 4 / 9;
+        gap: 16px;
+      }
+
+      .page-intro {
+        grid-template-columns: repeat(8, 1fr);
+      }
+
+      .page-title {
+        grid-column: 1 / 4;
+      }
+
+      .page-description {
+        grid-column: 5 / 9;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 32px 16px;
+      }
+
+      .photo-1 { grid-column: 1 / 4; }
+      .photo-2 { grid-column: 5 / 9; margin-top: 60px; }
+      .photo-3 { grid-column: 2 / 7; }
+      .photo-4 { grid-column: 6 / 9; }
+      .photo-5 { grid-column: 1 / 5; }
+      .photo-6 { grid-column: 6 / 9; margin-top: 60px; }
+      .photo-7 { grid-column: 1 / 5; }
+      .photo-8 { grid-column: 5 / 9; margin-top: 60px; }
+      .photo-9 { grid-column: 2 / 8; }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .site-wrapper {
+        padding: 0 20px;
+      }
+
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;
+        padding: 20px 0;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 12px 18px;
+      }
+
+      .page-intro {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .page-title {
+        margin-bottom: 16px;
+      }
+
+      .page-description {
+        max-width: 100%;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px 12px;
+      }
+
+      .photo-1 { grid-column: 1 / 5; }
+      .photo-2 { grid-column: 2 / 5; margin-top: 0; }
+      .photo-3 { grid-column: 1 / 5; margin-top: 0; }
+      .photo-4 { grid-column: 2 / 5; margin-top: 0; }
+      .photo-5 { grid-column: 1 / 5; margin-top: 0; }
+      .photo-6 { grid-column: 2 / 5; margin-top: 0; }
+      .photo-7 { grid-column: 1 / 5; margin-top: 0; }
+      .photo-8 { grid-column: 2 / 5; margin-top: 0; }
+      .photo-9 { grid-column: 1 / 5; margin-top: 0; }
+
+      .lightbox {
+        padding: 16px;
+      }
+
+      .lightbox img {
+        max-height: 78vh;
+      }
+
+      footer {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-wrapper">
+
+    <header>
+      <a class="logo" href="../">Brandon Förderer</a>
+
+      <nav aria-label="Hauptnavigation">
+        <a href="../">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="./" class="active">Photography</a>
+        <a href="../flappy-bird/">Flappy Bird</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-intro">
+        <h1 class="page-title">Photography</h1>
+
+        <p class="page-description">
+          Fotografische Beobachtungen von Architektur, Räumen und urbanen Situationen.
+          <span class="image-count">Selected photographs / 09 images</span>
+        </p>
+      </section>
+
+      <section class="photo-grid" aria-label="Fotografische Arbeiten">
+
+        <figure class="photo photo-1">
+          <button type="button" data-image="images/IMG_0439(1).jpg"
+            data-caption="01 / Architecture"
+            aria-label="Fotografie 1 vergrößern">
+            <img src="images/IMG_0439(1).jpg"
+              alt="Historisches Eckgebäude mit reich gegliederter Fassade"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>01</span>
+            <span>Architecture</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-2">
+          <button type="button" data-image="images/IMG_0427(1).jpg"
+            data-caption="02 / Perspective"
+            aria-label="Fotografie 2 vergrößern">
+            <img src="images/IMG_0427(1).jpg"
+              alt="Blick durch eine kreisförmige Öffnung in den Himmel"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>02</span>
+            <span>Perspective</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-3">
+          <button type="button" data-image="images/IMG_2260(1).jpg"
+            data-caption="03 / Urban space"
+            aria-label="Fotografie 3 vergrößern">
+            <img src="images/IMG_2260(1).jpg"
+              alt="Nächtliche Architektur mit pinker Beleuchtung und Bäumen"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>03</span>
+            <span>Urban space</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-4">
+          <button type="button" data-image="images/IMG_1117(1).jpg"
+            data-caption="04 / Romanesque architecture"
+            aria-label="Fotografie 4 vergrößern">
+            <img src="images/IMG_1117(1).jpg"
+              alt="Romanische Kirchenarchitektur mit Rundbogenapsis und Türmen"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>04</span>
+            <span>Architecture</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-5">
+          <button type="button" data-image="images/AA4A0698-E186-4923-A757-94E10805CAA6(1).jpg"
+            data-caption="05 / Reflection"
+            aria-label="Fotografie 5 vergrößern">
+            <img src="images/AA4A0698-E186-4923-A757-94E10805CAA6(1).jpg"
+              alt="Architektur und Wasseroberfläche mit Spiegelungen"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>05</span>
+            <span>Reflection</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-6">
+          <button type="button" data-image="images/IMG_3548(1).JPG"
+            data-caption="06 / Sacred architecture"
+            aria-label="Fotografie 6 vergrößern">
+            <img src="images/IMG_3548(1).JPG"
+              alt="Kleine Kirche mit markantem Dach und Turm"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>06</span>
+            <span>Architecture</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-7">
+          <button type="button" data-image="images/IMG_1022(1).jpg"
+            data-caption="07 / Interior"
+            aria-label="Fotografie 7 vergrößern">
+            <img src="images/IMG_1022(1).jpg"
+              alt="Blick nach oben auf eine aufwendig gestaltete Glaskuppel"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>07</span>
+            <span>Interior</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-8">
+          <button type="button" data-image="images/IMG_8177(1).jpg"
+            data-caption="08 / Contemporary architecture"
+            aria-label="Fotografie 8 vergrößern">
+            <img src="images/IMG_8177(1).jpg"
+              alt="Zeitgenössisches Gebäude mit geschwungener Fassadengestaltung"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>08</span>
+            <span>Architecture</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo photo-9">
+          <button type="button" data-image="images/IMG_9607 2.jpg"
+            data-caption="09 / Pavilion"
+            aria-label="Fotografie 9 vergrößern">
+            <img src="images/IMG_9607 2.jpg"
+              alt="Pavillon mit geometrischer Fassadengliederung und auskragendem Dach"
+              loading="lazy">
+          </button>
+          <figcaption>
+            <span>09</span>
+            <span>Pavilion</span>
+          </figcaption>
+        </figure>
+
+      </section>
+    </main>
+
+    <footer>
+      <span>© Brandon Förderer</span>
+      <a href="../impressum.html">Impressum</a>
+    </footer>
+
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+
+  <div class="lightbox" id="lightbox"
+    role="dialog" aria-modal="true" aria-label="Bildansicht">
+
+    <button class="lightbox-close" id="lightbox-close"
+      type="button" aria-label="Bildansicht schließen">
+      ×
+    </button>
+
+    <div class="lightbox-content">
+      <img id="lightbox-image" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const closeButton = document.getElementById("lightbox-close");
+
+    let previouslyFocusedElement = null;
+
+    document.querySelectorAll("[data-image]").forEach(button => {
+      button.addEventListener("click", () => {
+        previouslyFocusedElement = document.activeElement;
+
+        lightboxImage.src = button.dataset.image;
+        lightboxImage.alt = button.querySelector("img").alt;
+        lightboxCaption.textContent = button.dataset.caption;
+
+        lightbox.classList.add("open");
+        closeButton.focus();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImage.src = "";
+
+      if (previouslyFocusedElement) {
+        previouslyFocusedElement.focus();
+      }
+    }
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
