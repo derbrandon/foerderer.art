@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Die persönliche Website von Brandon Förderer. Ein digitales Archiv für Projekte, Gedanken, Ideen und Fotografie.">
+    <meta name="description" content="Impressum der persönlichen Website von Brandon Förderer.">
 
-    <title>Brandon Förderer</title>
+    <title>Impressum — Brandon Förderer</title>
 
     <style>
 
@@ -43,6 +43,7 @@
             --content-width: 1440px;
         }
 
+
         /* =================================
            02 — GENERAL
         ================================= */
@@ -65,24 +66,16 @@
             line-height: 1.6;
         }
 
-        body.modal-open {
-            overflow: hidden;
-        }
-
         a {
             color: var(--foreground);
             text-decoration: none;
         }
 
-        button {
-            font: inherit;
-        }
-
-        a:focus-visible,
-        button:focus-visible {
+        a:focus-visible {
             outline: 1px solid var(--foreground);
             outline-offset: 4px;
         }
+
 
         /* =================================
            03 — PAGE GRID
@@ -108,9 +101,12 @@
                     transparent 1px
                 );
 
-            background-size: var(--grid-unit) var(--grid-unit);
+            background-size:
+                var(--grid-unit) var(--grid-unit);
+
             background-position: 0 0;
         }
+
 
         /* =================================
            04 — HEADER
@@ -140,24 +136,16 @@
             flex-wrap: wrap;
         }
 
-        nav a,
-        .nav-button {
+        nav a {
             font-size: var(--text-size);
             color: var(--foreground);
             transition: color 0.2s ease;
         }
 
-        nav a:hover,
-        .nav-button:hover {
+        nav a:hover {
             color: var(--accent);
         }
 
-        .nav-button {
-            padding: 0;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-        }
 
         /* =================================
            05 — MAIN CONTENT
@@ -171,21 +159,68 @@
             padding-bottom: var(--space-section);
         }
 
-        .intro {
+        .legal-content {
             grid-column: 2 / span 7;
             max-width: 760px;
         }
 
-        .intro p {
-            font-size: var(--text-size);
-            line-height: 1.9;
-            color: var(--foreground);
-            margin: 0 0 24px 0;
+        .page-label {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.06em;
+            margin-bottom: 24px;
         }
 
-        .intro p:last-child {
-            margin-bottom: 0;
+        h1 {
+            font-size: var(--display-size);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin: 0 0 12px 0;
         }
+
+        .subtitle {
+            margin: 0 0 64px 0;
+            line-height: 1.8;
+        }
+
+        .legal-section {
+            margin-bottom: 40px;
+        }
+
+        .legal-section h2 {
+            font-size: var(--text-size);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin: 0 0 12px 0;
+        }
+
+        .legal-section p {
+            font-size: var(--text-size);
+            line-height: 1.9;
+            margin: 0 0 16px 0;
+        }
+
+        .legal-section a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .legal-section a:hover {
+            color: var(--muted);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 24px;
+            font-size: var(--text-size);
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
 
         /* =================================
            06 — FOOTER
@@ -211,170 +246,21 @@
             gap: 24px;
         }
 
-        footer a,
-        .footer-button {
+        footer a {
             color: var(--foreground);
             transition: color 0.2s ease;
         }
 
-        footer a:hover,
-        .footer-button:hover {
+        footer a:hover {
             color: var(--accent);
         }
 
-        .footer-button {
-            border: none;
-            padding: 0;
-            background: transparent;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: inherit;
-        }
 
         /* =================================
-           07 — FLOATING WINDOW
-        ================================= */
-
-        .window {
-            position: fixed;
-            inset: 0;
-            width: min(560px, calc(100% - 40px));
-            max-width: 560px;
-            max-height: min(680px, calc(100% - 40px));
-            margin: auto;
-            padding: 0;
-            border: 1px solid var(--foreground);
-            background: var(--background);
-            color: var(--foreground);
-            overflow: hidden;
-        }
-
-        .window[open] {
-            display: flex;
-            flex-direction: column;
-            animation: windowFade 180ms ease both;
-        }
-
-        .window::backdrop {
-            background: rgba(0, 0, 0, 0.30);
-            animation: backdropFade 180ms ease both;
-        }
-
-        @keyframes windowFade {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes backdropFade {
-            from {
-                background: rgba(0, 0, 0, 0);
-            }
-
-            to {
-                background: rgba(0, 0, 0, 0.30);
-            }
-        }
-
-        /* WINDOW HEADER */
-
-        .window-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 40px;
-            padding: 0 12px;
-            background: var(--accent);
-            border-bottom: 1px solid var(--foreground);
-            flex-shrink: 0;
-        }
-
-        .window-title {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .window-close {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            padding: 0;
-            border: 1px solid var(--foreground);
-            background: transparent;
-            color: var(--foreground);
-            cursor: pointer;
-            font-size: 16px;
-            line-height: 1;
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
-        }
-
-        .window-close:hover {
-            background: var(--foreground);
-            color: var(--accent);
-        }
-
-        /* WINDOW CONTENT */
-
-        .window-content {
-            padding: 32px;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-        }
-
-        .window-content h2 {
-            font-size: var(--heading-size);
-            font-weight: 700;
-            margin: 0 0 24px 0;
-        }
-
-        .window-content h3 {
-            font-size: var(--text-size);
-            font-weight: 700;
-            margin: 24px 0 8px 0;
-        }
-
-        .window-content p {
-            font-size: var(--text-size);
-            line-height: 1.8;
-            margin: 0 0 16px 0;
-        }
-
-        .window-content a {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .window-content a:hover {
-            color: var(--muted);
-        }
-
-        .window-content section + section {
-            border-top: 1px solid var(--grid-color);
-            margin-top: 24px;
-            padding-top: 8px;
-        }
-
-        .window-content [hidden] {
-            display: none !important;
-        }
-
-        /* =================================
-           08 — RESPONSIVE TABLET
+           07 — RESPONSIVE TABLET
         ================================= */
 
         @media (max-width: 900px) {
-
-            nav {
-                gap: 16px;
-            }
 
             .logo {
                 grid-column: span 3;
@@ -382,15 +268,17 @@
 
             nav {
                 grid-column: span 9;
+                gap: 16px;
             }
 
-            .intro {
+            .legal-content {
                 grid-column: 1 / span 9;
             }
         }
 
+
         /* =================================
-           09 — RESPONSIVE MOBILE
+           08 — RESPONSIVE MOBILE
         ================================= */
 
         @media (max-width: 700px) {
@@ -418,8 +306,7 @@
                 gap: 12px 20px;
             }
 
-            nav a,
-            .nav-button {
+            nav a {
                 font-size: 11px;
             }
 
@@ -430,13 +317,16 @@
                 padding-bottom: var(--space-section);
             }
 
-            .intro {
+            .legal-content {
                 grid-column: 1 / -1;
             }
 
-            .intro p {
-                line-height: 1.8;
-                margin-bottom: 20px;
+            .subtitle {
+                margin-bottom: 48px;
+            }
+
+            .legal-section {
+                margin-bottom: 32px;
             }
 
             footer {
@@ -454,19 +344,11 @@
                 flex-wrap: wrap;
                 gap: 12px;
             }
-
-            .window {
-                width: calc(100% - 24px);
-                max-height: calc(100% - 24px);
-            }
-
-            .window-content {
-                padding: 24px 20px;
-            }
         }
 
+
         /* =================================
-           10 — SMALL MOBILE
+           09 — SMALL MOBILE
         ================================= */
 
         @media (max-width: 380px) {
@@ -482,8 +364,9 @@
             }
         }
 
+
         /* =================================
-           11 — REDUCED MOTION
+           10 — REDUCED MOTION
         ================================= */
 
         @media (prefers-reduced-motion: reduce) {
@@ -501,9 +384,11 @@
 
 </head>
 
+
 <body>
 
 <div class="site-wrapper">
+
 
     <!-- =================================
          HEADER
@@ -525,52 +410,108 @@
 
             <a href="/flappy-bird/">Flappy Bird</a>
 
-            <button
-                class="nav-button"
-                type="button"
-                data-window="contact">
+            <a href="mailto:brandon@foerderer.art">
                 Contact
-            </button>
+            </a>
 
         </nav>
 
     </header>
 
+
     <!-- =================================
-         HOME
+         IMPRESSUM
     ================================= -->
 
     <main>
 
-        <section class="intro">
+        <article class="legal-content">
 
-            <p>
-                Hallo, mein Name ist Brandon Förderer.
-                Ich studiere Kunstgeschichte und Philosophie
-                im Bachelor an der Goethe-Universität Frankfurt am Main.
+            <div class="page-label">
+                LEGAL / 001
+            </div>
+
+            <h1>Impressum</h1>
+
+            <p class="subtitle">
+                Angaben gemäß § 5 DDG
             </p>
 
-            <p>
-                Mit dieser Website möchte ich einen digitalen Ort schaffen,
-                an dem ich Projekte, Gedanken, Ideen und Fantasien sammle
-                und mit der Öffentlichkeit teile.
-            </p>
 
-            <p>
-                Themen, die mich im Alltag, im Beruf und an der Universität
-                beschäftigen, sollen hier miteinander in Verbindung treten,
-                sich gegenseitig beeinflussen und neue Perspektiven eröffnen.
-            </p>
+            <section class="legal-section">
 
-            <p>
-                Die Website versteht sich als offenes Archiv meiner Interessen
-                und Arbeiten – ein Versuch, unterschiedliche Gedanken und
-                kreative Ansätze in einem gemeinsamen Zusammenhang zusammenzuführen.
-            </p>
+                <h2>VERANTWORTLICH</h2>
 
-        </section>
+                <p>
+                    Brandon Förderer<br>
+                    Münchener Straße 24<br>
+                    60329 Frankfurt am Main
+                </p>
+
+            </section>
+
+
+            <section class="legal-section">
+
+                <h2>KONTAKT</h2>
+
+                <p>
+                    <a href="mailto:brandon@foerderer.art">
+                        brandon@foerderer.art
+                    </a>
+                </p>
+
+            </section>
+
+
+            <section class="legal-section">
+
+                <h2>HAFTUNG FÜR INHALTE</h2>
+
+                <p>
+                    Die Inhalte dieser Website werden mit Sorgfalt erstellt.
+                    Für die Richtigkeit, Vollständigkeit und Aktualität
+                    der Inhalte kann jedoch keine Gewähr übernommen werden.
+                </p>
+
+                <p>
+                    Gesetzliche Verpflichtungen zur Entfernung oder Sperrung
+                    von Informationen bleiben hiervon unberührt.
+                </p>
+
+            </section>
+
+
+            <section class="legal-section">
+
+                <h2>HAFTUNG FÜR LINKS</h2>
+
+                <p>
+                    Diese Website enthält gegebenenfalls Links zu externen
+                    Websites Dritter, auf deren Inhalte kein Einfluss besteht.
+                </p>
+
+                <p>
+                    Für die Inhalte verlinkter Seiten ist stets der jeweilige
+                    Anbieter oder Betreiber verantwortlich.
+                </p>
+
+                <p>
+                    Bei Bekanntwerden von Rechtsverletzungen werden
+                    entsprechende Links nach Prüfung entfernt.
+                </p>
+
+            </section>
+
+
+            <a class="back-link" href="/">
+                ← BACK TO HOME
+            </a>
+
+        </article>
 
     </main>
+
 
     <!-- =================================
          FOOTER
@@ -579,361 +520,25 @@
     <footer>
 
         <div class="footer-left">
-            © Brandon Förderer
+            © 2026 Brandon Förderer
         </div>
 
         <div class="footer-right">
 
-            <button
-                class="footer-button"
-                type="button"
-                data-window="impressum">
+            <a href="/impressum.html">
                 Impressum
-            </button>
+            </a>
 
-            <button
-                class="footer-button"
-                type="button"
-                data-window="datenschutz">
+            <a href="/#datenschutz">
                 Datenschutz
-            </button>
+            </a>
 
         </div>
 
     </footer>
 
+
 </div>
-
-<!-- =================================
-     FLOATING WINDOW
-================================= -->
-
-<dialog
-    class="window"
-    id="info-window"
-    aria-labelledby="window-title">
-
-    <div class="window-header">
-
-        <span class="window-title" id="window-title">
-            INFORMATION
-        </span>
-
-        <button
-            class="window-close"
-            type="button"
-            aria-label="Fenster schließen"
-            id="window-close">
-            ×
-        </button>
-
-    </div>
-
-    <div class="window-content">
-
-        <!-- =================================
-             IMPRESSUM — VOLLSTÄNDIG ÜBERNOMMEN
-        ================================= -->
-
-        <section data-content="impressum" hidden>
-
-            <h2>Impressum</h2>
-
-            <p>Angaben gemäß § 5 DDG</p>
-
-            <h3>VERANTWORTLICH</h3>
-
-            <p>
-                Brandon Förderer<br>
-                Münchener Straße 24<br>
-                60329 Frankfurt am Main
-            </p>
-
-            <h3>KONTAKT</h3>
-
-            <p>
-                <a href="mailto:brandon@foerderer.art">
-                    brandon@foerderer.art
-                </a>
-            </p>
-
-            <h3>HAFTUNG FÜR INHALTE</h3>
-
-            <p>
-                Die Inhalte dieser Website werden mit Sorgfalt erstellt.
-                Für die Richtigkeit, Vollständigkeit und Aktualität
-                der Inhalte kann jedoch keine Gewähr übernommen werden.
-            </p>
-
-            <p>
-                Gesetzliche Verpflichtungen zur Entfernung oder Sperrung
-                von Informationen bleiben hiervon unberührt.
-            </p>
-
-            <h3>HAFTUNG FÜR LINKS</h3>
-
-            <p>
-                Diese Website enthält gegebenenfalls Links zu externen
-                Websites Dritter, auf deren Inhalte kein Einfluss besteht.
-            </p>
-
-            <p>
-                Für die Inhalte verlinkter Seiten ist stets der jeweilige
-                Anbieter oder Betreiber verantwortlich.
-            </p>
-
-            <p>
-                Bei Bekanntwerden von Rechtsverletzungen werden
-                entsprechende Links nach Prüfung entfernt.
-            </p>
-
-        </section>
-
-        <!-- =================================
-             DATENSCHUTZ
-        ================================= -->
-
-        <section data-content="datenschutz" hidden>
-
-            <h2>Datenschutzerklärung</h2>
-
-            <h3>1. Verantwortlicher</h3>
-
-            <p>
-                Brandon Förderer<br>
-                [Vollständige Anschrift ergänzen]<br>
-                E-Mail: [E-Mail-Adresse ergänzen]
-            </p>
-
-            <h3>2. Hosting</h3>
-
-            <p>
-                Diese Website wird über einen Hosting-Anbieter
-                bereitgestellt. Bitte ergänze hier den Namen und
-                die Anschrift deines tatsächlichen Hosting-Anbieters
-                sowie die Informationen zur Datenverarbeitung.
-            </p>
-
-            <h3>3. Server-Logfiles</h3>
-
-            <p>
-                Beim Aufruf dieser Website können durch den
-                Hosting-Anbieter technische Informationen
-                verarbeitet werden. Dazu können insbesondere
-                IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp,
-                Betriebssystem und aufgerufene Seiten gehören.
-            </p>
-
-            <p>
-                Die tatsächliche Speicherung, Speicherdauer
-                und Rechtsgrundlage sind anhand der Bedingungen
-                deines Hosting-Anbieters zu ergänzen.
-            </p>
-
-            <h3>4. Cookies und externe Dienste</h3>
-
-            <p>
-                Hier müssen gegebenenfalls eingesetzte Cookies,
-                externe Schriftarten, Analysewerkzeuge,
-                eingebundene Medien und weitere Dienste
-                aufgeführt werden.
-            </p>
-
-            <h3>5. Deine Rechte</h3>
-
-            <p>
-                Du hast im Rahmen der gesetzlichen Voraussetzungen
-                insbesondere Rechte auf Auskunft, Berichtigung,
-                Löschung, Einschränkung der Verarbeitung und
-                Beschwerde bei einer Datenschutzaufsichtsbehörde.
-            </p>
-
-            <h3>6. Kontakt</h3>
-
-            <p>
-                Bei Fragen zum Datenschutz kannst du dich an
-                die oben genannte verantwortliche Stelle wenden.
-            </p>
-
-        </section>
-
-        <!-- =================================
-             CONTACT
-        ================================= -->
-
-        <section data-content="contact" hidden>
-
-            <h2>Contact</h2>
-
-            <p>
-                Für Fragen, Anregungen und Kooperationen
-                kannst du mich gerne kontaktieren.
-            </p>
-
-            <h3>E-Mail</h3>
-
-            <p>
-                <a href="mailto:brandon@foerderer.art">
-                    brandon@foerderer.art
-                </a>
-            </p>
-
-            <h3>Location</h3>
-
-            <p>
-                Frankfurt am Main
-            </p>
-
-        </section>
-
-        <!-- =================================
-             IMAGE INFORMATION — FUTURE USE
-        ================================= -->
-
-        <section data-content="image" hidden>
-
-            <h2>Image Information</h2>
-
-            <p id="image-description">
-                Bildinformationen werden hier angezeigt.
-            </p>
-
-            <p id="image-credit">
-                Bildnachweis
-            </p>
-
-        </section>
-
-    </div>
-
-</dialog>
-
-<!-- =================================
-     JAVASCRIPT — WINDOW SYSTEM
-================================= -->
-
-<script>
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const windowElement = document.getElementById("info-window");
-        const windowTitle = document.getElementById("window-title");
-        const windowClose = document.getElementById("window-close");
-        const windowSections = document.querySelectorAll("[data-content]");
-
-        const windowNames = {
-            impressum: "IMPRESSUM / 001",
-            datenschutz: "DATENSCHUTZ / 002",
-            contact: "CONTACT / 003",
-            image: "IMAGE INFORMATION"
-        };
-
-        /* =================================
-           OPEN WINDOW
-        ================================= */
-
-        function openWindow(name) {
-
-            const selectedSection = document.querySelector(
-                `[data-content="${name}"]`
-            );
-
-            if (!selectedSection || !windowElement) {
-                return;
-            }
-
-            windowSections.forEach(section => {
-                section.hidden = true;
-            });
-
-            selectedSection.hidden = false;
-
-            windowTitle.textContent =
-                windowNames[name] || "INFORMATION";
-
-            if (!windowElement.open) {
-                windowElement.showModal();
-            }
-
-            document.body.classList.add("modal-open");
-        }
-
-        /* =================================
-           CLOSE WINDOW
-        ================================= */
-
-        function closeWindow() {
-
-            if (windowElement.open) {
-                windowElement.close();
-            }
-
-            document.body.classList.remove("modal-open");
-        }
-
-        /* =================================
-           OPEN BUTTONS
-        ================================= */
-
-        document.addEventListener("click", event => {
-
-            const trigger = event.target.closest("[data-window]");
-
-            if (!trigger) {
-                return;
-            }
-
-            event.preventDefault();
-            openWindow(trigger.dataset.window);
-        });
-
-        /* =================================
-           CLOSE BUTTON
-        ================================= */
-
-        windowClose.addEventListener("click", closeWindow);
-
-        /* =================================
-           ESCAPE / DIALOG CLOSE
-        ================================= */
-
-        windowElement.addEventListener("close", () => {
-            document.body.classList.remove("modal-open");
-        });
-
-        windowElement.addEventListener("cancel", () => {
-            document.body.classList.remove("modal-open");
-        });
-
-        /* =================================
-           CLICK OUTSIDE
-        ================================= */
-
-        windowElement.addEventListener("click", event => {
-
-            if (event.target === windowElement) {
-                closeWindow();
-            }
-        });
-
-        /* =================================
-           IMAGE INFORMATION
-        ================================= */
-
-        window.openImageInfo = function(description, credit) {
-
-            document.getElementById("image-description").textContent =
-                description;
-
-            document.getElementById("image-credit").textContent =
-                credit;
-
-            openWindow("image");
-        };
-
-    });
-
-</script>
 
 </body>
 </html>
