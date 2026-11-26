@@ -80,12 +80,21 @@
             line-height: 1.6;
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
         a {
             color: var(--foreground);
             text-decoration: none;
         }
 
-        a:focus-visible {
+        button {
+            font: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
             outline: 1px solid var(--foreground);
             outline-offset: 4px;
         }
@@ -171,7 +180,8 @@
 
         }
 
-        nav a {
+        nav a,
+        .nav-button {
 
             font-size: var(--text-size);
 
@@ -181,9 +191,19 @@
 
         }
 
-        nav a:hover {
+        nav a:hover,
+        .nav-button:hover {
 
             color: var(--accent);
+
+        }
+
+        .nav-button {
+
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
 
         }
 
@@ -210,20 +230,6 @@
             grid-column: 2 / span 7;
 
             max-width: 760px;
-
-        }
-
-        .intro h1 {
-
-            font-size: var(--display-size);
-
-            font-weight: 400;
-
-            line-height: 1.3;
-
-            margin: 0 0 40px 0;
-
-            letter-spacing: -1.5px;
 
         }
 
@@ -284,7 +290,8 @@
 
         }
 
-        footer a {
+        footer a,
+        .footer-button {
 
             color: var(--foreground);
 
@@ -292,15 +299,228 @@
 
         }
 
-        footer a:hover {
+        footer a:hover,
+        .footer-button:hover {
 
             color: var(--accent);
 
         }
 
+        .footer-button {
+
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+
+            font-family: inherit;
+            font-size: inherit;
+
+        }
+
 
         /* =================================
-           07 — RESPONSIVE TABLET
+           07 — FLOATING WINDOW
+        ================================= */
+
+        .window {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: min(560px, calc(100% - 40px));
+            max-width: 560px;
+
+            max-height: min(680px, calc(100% - 40px));
+
+            margin: auto;
+            padding: 0;
+
+            border: 1px solid var(--foreground);
+
+            background: var(--background);
+            color: var(--foreground);
+
+            overflow: hidden;
+
+        }
+
+        .window[open] {
+
+            display: flex;
+            flex-direction: column;
+
+            animation: windowFade 180ms ease both;
+
+        }
+
+        .window::backdrop {
+
+            background: rgba(0, 0, 0, 0.30);
+
+            animation: backdropFade 180ms ease both;
+
+        }
+
+        @keyframes windowFade {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes backdropFade {
+
+            from {
+                background: rgba(0, 0, 0, 0);
+            }
+
+            to {
+                background: rgba(0, 0, 0, 0.30);
+            }
+
+        }
+
+
+        /* WINDOW HEADER */
+
+        .window-header {
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            min-height: 40px;
+
+            padding: 0 12px;
+
+            background: var(--accent);
+
+            border-bottom: 1px solid var(--foreground);
+
+            flex-shrink: 0;
+
+        }
+
+        .window-title {
+
+            font-size: 13px;
+            font-weight: 700;
+
+        }
+
+        .window-close {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 24px;
+            height: 24px;
+
+            padding: 0;
+
+            border: 1px solid var(--foreground);
+
+            background: transparent;
+
+            color: var(--foreground);
+
+            cursor: pointer;
+
+            font-size: 16px;
+            line-height: 1;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+
+        }
+
+        .window-close:hover {
+
+            background: var(--foreground);
+            color: var(--accent);
+
+        }
+
+
+        /* WINDOW CONTENT */
+
+        .window-content {
+
+            padding: 32px;
+
+            overflow-y: auto;
+
+            overscroll-behavior: contain;
+
+        }
+
+        .window-content h2 {
+
+            font-size: var(--heading-size);
+            font-weight: 700;
+
+            margin: 0 0 24px 0;
+
+        }
+
+        .window-content h3 {
+
+            font-size: var(--text-size);
+            font-weight: 700;
+
+            margin: 24px 0 8px 0;
+
+        }
+
+        .window-content p {
+
+            font-size: var(--text-size);
+            line-height: 1.8;
+
+            margin: 0 0 16px 0;
+
+        }
+
+        .window-content a {
+
+            text-decoration: underline;
+            text-underline-offset: 3px;
+
+        }
+
+        .window-content a:hover {
+
+            color: var(--muted);
+
+        }
+
+        .window-content section + section {
+
+            border-top: 1px solid var(--grid-color);
+
+            margin-top: 24px;
+            padding-top: 8px;
+
+        }
+
+        .window-content [hidden] {
+            display: none !important;
+        }
+
+
+        /* =================================
+           08 — RESPONSIVE TABLET
         ================================= */
 
         @media (max-width: 900px) {
@@ -325,7 +545,7 @@
 
 
         /* =================================
-           08 — RESPONSIVE MOBILE
+           09 — RESPONSIVE MOBILE
         ================================= */
 
         @media (max-width: 700px) {
@@ -364,7 +584,8 @@
 
             }
 
-            nav a {
+            nav a,
+            .nav-button {
                 font-size: 11px;
             }
 
@@ -381,10 +602,6 @@
 
             .intro {
                 grid-column: 1 / -1;
-            }
-
-            .intro h1 {
-                margin-bottom: 32px;
             }
 
             .intro p {
@@ -419,11 +636,25 @@
 
             }
 
+            .window {
+
+                width: calc(100% - 24px);
+
+                max-height: calc(100% - 24px);
+
+            }
+
+            .window-content {
+
+                padding: 24px 20px;
+
+            }
+
         }
 
 
         /* =================================
-           09 — SMALL MOBILE
+           10 — SMALL MOBILE
         ================================= */
 
         @media (max-width: 380px) {
@@ -438,6 +669,25 @@
                 grid-column: 1 / -1;
 
                 justify-content: flex-start;
+
+            }
+
+        }
+
+
+        /* =================================
+           11 — REDUCED MOTION
+        ================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
 
             }
 
@@ -473,7 +723,12 @@
 
             <a href="/flappy-bird/">Flappy Bird</a>
 
-            <a href="/contact/">Contact</a>
+            <button
+                class="nav-button"
+                type="button"
+                data-window="contact">
+                Contact
+            </button>
 
         </nav>
 
@@ -487,10 +742,6 @@
     <main>
 
         <section class="intro">
-
-            <h1>
-                Brandon Förderer
-            </h1>
 
             <p>
                 Hallo, mein Name ist Brandon Förderer.
@@ -533,9 +784,19 @@
 
         <div class="footer-right">
 
-            <a href="/impressum.html">
+            <button
+                class="footer-button"
+                type="button"
+                data-window="impressum">
                 Impressum
-            </a>
+            </button>
+
+            <button
+                class="footer-button"
+                type="button"
+                data-window="datenschutz">
+                Datenschutz
+            </button>
 
         </div>
 
@@ -543,6 +804,347 @@
 
 
 </div>
+
+
+<!-- =================================
+     FLOATING WINDOW
+     ONE WINDOW — MULTIPLE CONTENTS
+================================= -->
+
+<dialog
+    class="window"
+    id="info-window"
+    aria-labelledby="window-title">
+
+    <div class="window-header">
+
+        <span class="window-title" id="window-title">
+            INFORMATION
+        </span>
+
+        <button
+            class="window-close"
+            type="button"
+            aria-label="Fenster schließen"
+            id="window-close">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="window-content">
+
+
+        <!-- IMPRESSUM -->
+
+        <section data-content="impressum" hidden>
+
+            <h2>Impressum</h2>
+
+            <h3>Angaben gemäß § 5 DDG</h3>
+
+            <p>
+                Brandon Förderer
+                <br>
+                [Vollständige ladungsfähige Anschrift ergänzen]
+            </p>
+
+            <h3>Kontakt</h3>
+
+            <p>
+                E-Mail: [E-Mail-Adresse ergänzen]
+            </p>
+
+            <h3>Verantwortlich für den Inhalt</h3>
+
+            <p>
+                Brandon Förderer
+                <br>
+                [Vollständige Anschrift ergänzen]
+            </p>
+
+            <p>
+                Dies ist ein persönliches Informations- und
+                Portfolioangebot.
+            </p>
+
+        </section>
+
+
+        <!-- DATENSCHUTZ -->
+
+        <section data-content="datenschutz" hidden>
+
+            <h2>Datenschutzerklärung</h2>
+
+            <h3>1. Verantwortlicher</h3>
+
+            <p>
+                Brandon Förderer
+                <br>
+                [Vollständige Anschrift ergänzen]
+                <br>
+                E-Mail: [E-Mail-Adresse ergänzen]
+            </p>
+
+            <h3>2. Hosting</h3>
+
+            <p>
+                Diese Website wird über einen Hosting-Anbieter
+                bereitgestellt. Bitte ergänze hier den Namen und
+                die Anschrift deines tatsächlichen Hosting-Anbieters
+                sowie die Informationen zur Datenverarbeitung.
+            </p>
+
+            <h3>3. Server-Logfiles</h3>
+
+            <p>
+                Beim Aufruf dieser Website können durch den
+                Hosting-Anbieter technische Informationen
+                verarbeitet werden. Dazu können insbesondere
+                IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp,
+                Betriebssystem und aufgerufene Seiten gehören.
+            </p>
+
+            <p>
+                Die tatsächliche Speicherung, Speicherdauer
+                und Rechtsgrundlage sind anhand der Bedingungen
+                deines Hosting-Anbieters zu ergänzen.
+            </p>
+
+            <h3>4. Cookies und externe Dienste</h3>
+
+            <p>
+                Hier müssen gegebenenfalls eingesetzte Cookies,
+                externe Schriftarten, Analysewerkzeuge,
+                eingebundene Medien und weitere Dienste
+                aufgeführt werden.
+            </p>
+
+            <h3>5. Deine Rechte</h3>
+
+            <p>
+                Du hast im Rahmen der gesetzlichen Voraussetzungen
+                insbesondere Rechte auf Auskunft, Berichtigung,
+                Löschung, Einschränkung der Verarbeitung und
+                Beschwerde bei einer Datenschutzaufsichtsbehörde.
+            </p>
+
+            <h3>6. Kontakt</h3>
+
+            <p>
+                Bei Fragen zum Datenschutz kannst du dich an
+                die oben genannte verantwortliche Stelle wenden.
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section data-content="contact" hidden>
+
+            <h2>Contact</h2>
+
+            <p>
+                Für Fragen, Anregungen und Kooperationen
+                kannst du mich gerne kontaktieren.
+            </p>
+
+            <h3>E-Mail</h3>
+
+            <p>
+                [Deine E-Mail-Adresse ergänzen]
+            </p>
+
+            <h3>Location</h3>
+
+            <p>
+                Frankfurt am Main
+            </p>
+
+        </section>
+
+
+        <!-- IMAGE INFORMATION — FUTURE USE -->
+
+        <section data-content="image" hidden>
+
+            <h2>Image Information</h2>
+
+            <p id="image-description">
+                Bildinformationen werden hier angezeigt.
+            </p>
+
+            <p id="image-credit">
+                Bildnachweis
+            </p>
+
+        </section>
+
+
+    </div>
+
+</dialog>
+
+
+<!-- =================================
+     JAVASCRIPT — WINDOW SYSTEM
+================================= -->
+
+<script>
+
+    /* =================================
+       01 — ELEMENTS
+    ================================= */
+
+    const windowElement = document.getElementById("info-window");
+
+    const windowTitle = document.getElementById("window-title");
+
+    const windowClose = document.getElementById("window-close");
+
+    const windowSections = document.querySelectorAll("[data-content]");
+
+
+    /* =================================
+       02 — WINDOW CONTENT
+    ================================= */
+
+    const windowNames = {
+
+        impressum: "IMPRESSUM / 001",
+
+        datenschutz: "DATENSCHUTZ / 002",
+
+        contact: "CONTACT / 003",
+
+        image: "IMAGE INFORMATION"
+
+    };
+
+
+    /* =================================
+       03 — OPEN WINDOW
+    ================================= */
+
+    function openWindow(name) {
+
+        const selectedSection = document.querySelector(
+            `[data-content="${name}"]`
+        );
+
+        if (!selectedSection) {
+            return;
+        }
+
+        /* Hide all other contents */
+
+        windowSections.forEach(section => {
+            section.hidden = true;
+        });
+
+        /* Show selected content */
+
+        selectedSection.hidden = false;
+
+        /* Set window title */
+
+        windowTitle.textContent =
+            windowNames[name] || "INFORMATION";
+
+        /* Open dialog */
+
+        if (!windowElement.open) {
+            windowElement.showModal();
+        }
+
+        document.body.classList.add("modal-open");
+
+    }
+
+
+    /* =================================
+       04 — CLOSE WINDOW
+    ================================= */
+
+    function closeWindow() {
+
+        if (windowElement.open) {
+            windowElement.close();
+        }
+
+        document.body.classList.remove("modal-open");
+
+    }
+
+
+    /* =================================
+       05 — OPEN BUTTONS
+    ================================= */
+
+    document.querySelectorAll("[data-window]").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const windowName = button.dataset.window;
+
+            openWindow(windowName);
+
+        });
+
+    });
+
+
+    /* =================================
+       06 — CLOSE BUTTON
+    ================================= */
+
+    windowClose.addEventListener("click", closeWindow);
+
+
+    /* =================================
+       07 — ESCAPE / DIALOG CLOSE
+    ================================= */
+
+    windowElement.addEventListener("close", () => {
+
+        document.body.classList.remove("modal-open");
+
+    });
+
+
+    /* =================================
+       08 — CLICK OUTSIDE
+    ================================= */
+
+    windowElement.addEventListener("click", event => {
+
+        if (event.target === windowElement) {
+            closeWindow();
+        }
+
+    });
+
+
+    /* =================================
+       09 — IMAGE INFORMATION
+    ================================= */
+
+    function openImageInfo(description, credit) {
+
+        document.getElementById("image-description").textContent =
+            description;
+
+        document.getElementById("image-credit").textContent =
+            credit;
+
+        openWindow("image");
+
+    }
+
+</script>
 
 </body>
 </html>
