@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -6,218 +5,581 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Projects — Brandon Förderer</title>
+    <meta name="description" content="Die persönliche Website von Brandon Förderer. Ein digitales Archiv für Projekte, Gedanken, Ideen und Fotografie.">
+
+    <title>Brandon Förderer</title>
 
     <style>
 
+        /* =================================
+           01 — DESIGN SYSTEM
+        ================================= */
+
+        :root {
+            --background: #F8FEE6;
+            --foreground: #000000;
+            --accent: #83FA6C;
+            --grid-color: #E1E3DC;
+            --muted: #777777;
+
+            --font-main: "Menlo", "Monaco", monospace;
+
+            --text-size: 13px;
+            --heading-size: 18px;
+            --display-size: 36px;
+
+            --grid-unit: 40px;
+
+            --space-xs: 4px;
+            --space-s: 8px;
+            --space-m: 16px;
+            --space-l: 20px;
+            --space-xl: 24px;
+            --space-xxl: 40px;
+            --space-section: 80px;
+
+            --page-margin: 40px;
+            --content-width: 1440px;
+        }
+
+
+        /* =================================
+           02 — GENERAL
+        ================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #F8FEE6;
-            color: #222;
-            font-family: Georgia, "Times New Roman", serif;
             margin: 0;
-            padding: 0 10%;
+            padding: 0;
+            background: var(--background);
+            color: var(--foreground);
+            font-family: var(--font-main);
+            font-size: var(--text-size);
+            line-height: 1.6;
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
 
         a {
-            color: #222;
+            color: var(--foreground);
             text-decoration: none;
         }
 
+        button {
+            font: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 1px solid var(--foreground);
+            outline-offset: 4px;
+        }
+
+
+        /* =================================
+           03 — PAGE GRID
+        ================================= */
+
+        .site-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--page-margin);
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    var(--grid-color) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    var(--grid-color) 1px,
+                    transparent 1px
+                );
+
+            background-size: var(--grid-unit) var(--grid-unit);
+            background-position: 0 0;
+        }
+
+
+        /* =================================
+           04 — HEADER
+        ================================= */
+
         header {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
             align-items: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #ddd9d1;
+            min-height: 80px;
+            border-bottom: 1px solid var(--foreground);
         }
 
         .logo {
-            font-size: 18px;
+            grid-column: span 4;
+            font-size: var(--heading-size);
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
         nav {
+            grid-column: span 8;
             display: flex;
+            justify-content: flex-end;
+            align-items: center;
             gap: 24px;
             flex-wrap: wrap;
         }
 
-        nav a {
-            font-size: 14px;
-            color: #666;
+        nav a,
+        .nav-button {
+            font-size: var(--text-size);
+            color: var(--foreground);
+            transition: color 0.2s ease;
         }
 
-        nav a:hover {
-            color: #222;
+        nav a:hover,
+        .nav-button:hover {
+            color: var(--accent);
         }
+
+        .nav-button {
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+
+        /* =================================
+           05 — MAIN CONTENT
+        ================================= */
 
         main {
-            max-width: 900px;
-            padding: 100px 0;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            min-height: 65vh;
+            padding-top: var(--space-section);
+            padding-bottom: var(--space-section);
         }
 
-        h1 {
-            font-size: 36px;
-            font-weight: 400;
-            margin-bottom: 20px;
+        .intro {
+            grid-column: 2 / span 7;
+            max-width: 760px;
         }
 
-        h2 {
-            font-size: 23px;
-            font-weight: 400;
-        }
-
-        p {
-            color: #666;
-            font-size: 17px;
+        .intro p {
+            font-size: var(--text-size);
             line-height: 1.9;
+            color: var(--foreground);
+            margin: 0 0 24px 0;
         }
 
-        .project {
-            padding: 30px 0;
-            border-bottom: 1px solid #ddd9d1;
+        .intro p:last-child {
+            margin-bottom: 0;
         }
 
-        .project:last-child {
-            border-bottom: none;
-        }
 
-        .project-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 20px;
-        }
-
-        .project-title span {
-            color: #888;
-            font-size: 14px;
-        }
+        /* =================================
+           06 — FOOTER
+        ================================= */
 
         footer {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            min-height: 80px;
+            border-top: 1px solid var(--foreground);
+            font-size: 10px;
+        }
+
+        .footer-left {
+            grid-column: span 6;
+        }
+
+        .footer-right {
+            grid-column: span 6;
+            display: flex;
+            justify-content: flex-end;
+            gap: 24px;
+        }
+
+        footer a,
+        .footer-button {
+            color: var(--foreground);
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover,
+        .footer-button:hover {
+            color: var(--accent);
+        }
+
+        .footer-button {
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+
+        /* =================================
+           07 — FLOATING WINDOW
+        ================================= */
+
+        .window {
+            position: fixed;
+            inset: 0;
+            width: min(560px, calc(100% - 40px));
+            max-width: 560px;
+            max-height: min(680px, calc(100% - 40px));
+            margin: auto;
+            padding: 0;
+            border: 1px solid var(--foreground);
+            background: var(--background);
+            color: var(--foreground);
+            overflow: hidden;
+        }
+
+        .window[open] {
+            display: flex;
+            flex-direction: column;
+            animation: windowFade 180ms ease both;
+        }
+
+        .window::backdrop {
+            background: rgba(0, 0, 0, 0.30);
+            animation: backdropFade 180ms ease both;
+        }
+
+        @keyframes windowFade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes backdropFade {
+            from {
+                background: rgba(0, 0, 0, 0);
+            }
+
+            to {
+                background: rgba(0, 0, 0, 0.30);
+            }
+        }
+
+
+        /* WINDOW HEADER */
+
+        .window-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 100px;
-            padding: 30px 0;
-            border-top: 1px solid #ddd9d1;
-            font-size: 14px;
-            color: #666;
+            min-height: 40px;
+            padding: 0 12px;
+            background: var(--accent);
+            border-bottom: 1px solid var(--foreground);
+            flex-shrink: 0;
         }
 
-        footer a {
-            color: #666;
+        .window-title {
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        footer a:hover {
-            color: #222;
+        .window-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            border: 1px solid var(--foreground);
+            background: transparent;
+            color: var(--foreground);
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
         }
 
-        @media (max-width: 700px) {
+        .window-close:hover {
+            background: var(--foreground);
+            color: var(--accent);
+        }
 
-            body {
-                padding: 0 6%;
-            }
 
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
+        /* WINDOW CONTENT */
+
+        .window-content {
+            padding: 32px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        .window-content h2 {
+            font-size: var(--heading-size);
+            font-weight: 700;
+            margin: 0 0 24px 0;
+        }
+
+        .window-content h3 {
+            font-size: var(--text-size);
+            font-weight: 700;
+            margin: 24px 0 8px 0;
+        }
+
+        .window-content p {
+            font-size: var(--text-size);
+            line-height: 1.8;
+            margin: 0 0 16px 0;
+        }
+
+        .window-content a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .window-content a:hover {
+            color: var(--muted);
+        }
+
+        .window-content section + section {
+            border-top: 1px solid var(--grid-color);
+            margin-top: 24px;
+            padding-top: 8px;
+        }
+
+        .window-content [hidden] {
+            display: none !important;
+        }
+
+
+        /* =================================
+           08 — RESPONSIVE TABLET
+        ================================= */
+
+        @media (max-width: 900px) {
 
             nav {
                 gap: 16px;
             }
 
+            .logo {
+                grid-column: span 3;
+            }
+
+            nav {
+                grid-column: span 9;
+            }
+
+            .intro {
+                grid-column: 1 / span 9;
+            }
+        }
+
+
+        /* =================================
+           09 — RESPONSIVE MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            :root {
+                --page-margin: 20px;
+                --space-section: 60px;
+                --display-size: 28px;
+            }
+
+            header {
+                grid-template-columns: 1fr;
+                align-items: flex-start;
+                padding: 20px 0;
+                gap: 20px;
+            }
+
+            .logo {
+                grid-column: 1;
+            }
+
+            nav {
+                grid-column: 1;
+                justify-content: flex-start;
+                gap: 12px 20px;
+            }
+
+            nav a,
+            .nav-button {
+                font-size: 11px;
+            }
+
             main {
-                padding: 70px 0;
+                grid-template-columns: repeat(4, 1fr);
+                min-height: auto;
+                padding-top: var(--space-section);
+                padding-bottom: var(--space-section);
             }
 
-            h1 {
-                font-size: 32px;
+            .intro {
+                grid-column: 1 / -1;
             }
 
-            .project-title {
-                flex-direction: column;
-                gap: 0;
+            .intro p {
+                line-height: 1.8;
+                margin-bottom: 20px;
             }
 
+            footer {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+                padding: 20px 0;
+            }
+
+            .footer-left {
+                grid-column: span 2;
+            }
+
+            .footer-right {
+                grid-column: span 2;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .window {
+                width: calc(100% - 24px);
+                max-height: calc(100% - 24px);
+            }
+
+            .window-content {
+                padding: 24px 20px;
+            }
+        }
+
+
+        /* =================================
+           10 — SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            nav {
+                gap: 10px 14px;
+            }
+
+            .footer-left,
+            .footer-right {
+                grid-column: 1 / -1;
+                justify-content: flex-start;
+            }
+        }
+
+
+        /* =================================
+           11 — REDUCED MOTION
+        ================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+<div class="site-wrapper">
+
+
+    <!-- =================================
+         HEADER
+    ================================= -->
 
     <header>
 
-        <a class="logo" href="/">Brandon Förderer</a>
+        <a class="logo" href="/">
+            Brandon Förderer
+        </a>
 
-        <nav>
+        <nav aria-label="Hauptnavigation">
+
             <a href="/">Home</a>
+
             <a href="/projects/">Projects</a>
+
             <a href="/photography/">Photography</a>
+
             <a href="/flappy-bird/">Flappy Bird</a>
-            <a href="/contact/">Contact</a>
+
+            <button
+                class="nav-button"
+                type="button"
+                data-window="contact">
+                Contact
+            </button>
+
         </nav>
 
     </header>
 
 
-    <!-- PROJECTS -->
+    <!-- =================================
+         HOME
+    ================================= -->
 
     <main>
 
-        <h1>Projects</h1>
-
-        <p>
-            A collection of academic and personal projects
-            exploring art, architecture, history and ideas.
-        </p>
-
-
-        <section class="project">
-
-            <div class="project-title">
-                <h2>Centre Le Corbusier</h2>
-                <span>Zurich</span>
-            </div>
+        <section class="intro">
 
             <p>
-                An academic project exploring the architecture
-                and spatial conception of the Centre Le Corbusier.
+                Hallo, mein Name ist Brandon Förderer.
+                Ich studiere Kunstgeschichte und Philosophie
+                im Bachelor an der Goethe-Universität Frankfurt am Main.
             </p>
 
-        </section>
-
-
-        <section class="project">
-
-            <div class="project-title">
-                <h2>St. Aposteln</h2>
-                <span>Cologne</span>
-            </div>
-
             <p>
-                An architectural and art historical examination
-                of the church of St. Aposteln in Cologne.
+                Mit dieser Website möchte ich einen digitalen Ort schaffen,
+                an dem ich Projekte, Gedanken, Ideen und Fantasien sammle
+                und mit der Öffentlichkeit teile.
             </p>
 
-        </section>
-
-
-        <section class="project">
-
-            <div class="project-title">
-                <h2>Dadaism</h2>
-                <span>Publication</span>
-            </div>
+            <p>
+                Themen, die mich im Alltag, im Beruf und an der Universität
+                beschäftigen, sollen hier miteinander in Verbindung treten,
+                sich gegenseitig beeinflussen und neue Perspektiven eröffnen.
+            </p>
 
             <p>
-                A magazine article exploring Dadaism,
-                its artistic practices and historical context.
+                Die Website versteht sich als offenes Archiv meiner Interessen
+                und Arbeiten – ein Versuch, unterschiedliche Gedanken und
+                kreative Ansätze in einem gemeinsamen Zusammenhang zusammenzuführen.
             </p>
 
         </section>
@@ -225,15 +587,362 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =================================
+         FOOTER
+    ================================= -->
 
     <footer>
 
-        <span>© Brandon Förderer</span>
+        <div class="footer-left">
+            © Brandon Förderer
+        </div>
 
-        <a href="/impressum.html">Impressum</a>
+        <div class="footer-right">
+
+            <button
+                class="footer-button"
+                type="button"
+                data-window="impressum">
+                Impressum
+            </button>
+
+            <button
+                class="footer-button"
+                type="button"
+                data-window="datenschutz">
+                Datenschutz
+            </button>
+
+        </div>
 
     </footer>
+
+
+</div>
+
+
+<!-- =================================
+     FLOATING WINDOW
+     ONE WINDOW — MULTIPLE CONTENTS
+================================= -->
+
+<dialog
+    class="window"
+    id="info-window"
+    aria-labelledby="window-title">
+
+    <div class="window-header">
+
+        <span class="window-title" id="window-title">
+            INFORMATION
+        </span>
+
+        <button
+            class="window-close"
+            type="button"
+            aria-label="Fenster schließen"
+            id="window-close">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="window-content">
+
+
+        <!-- IMPRESSUM -->
+
+        <section data-content="impressum" hidden>
+
+            <h2>Impressum</h2>
+
+            <h3>Angaben gemäß § 5 DDG</h3>
+
+            <p>
+                Brandon Förderer
+                <br>
+                Münchener Straße 24
+                <br>
+                60329 Frankfurt am Main
+            </p>
+
+            <h3>Kontakt</h3>
+
+            <p>
+                <a href="mailto:brandon@foerderer.art">
+                    brandon@foerderer.art
+                </a>
+            </p>
+
+            <h3>Haftung für Inhalte</h3>
+
+            <p>
+                Die Inhalte dieser Website werden mit Sorgfalt erstellt.
+                Für die Richtigkeit, Vollständigkeit und Aktualität
+                der Inhalte kann jedoch keine Gewähr übernommen werden.
+            </p>
+
+            <p>
+                Gesetzliche Verpflichtungen zur Entfernung oder Sperrung
+                von Informationen bleiben hiervon unberührt.
+            </p>
+
+            <h3>Haftung für Links</h3>
+
+            <p>
+                Diese Website enthält gegebenenfalls Links zu externen
+                Websites Dritter, auf deren Inhalte kein Einfluss besteht.
+            </p>
+
+            <p>
+                Für die Inhalte verlinkter Seiten ist stets der jeweilige
+                Anbieter oder Betreiber verantwortlich.
+            </p>
+
+            <p>
+                Bei Bekanntwerden von Rechtsverletzungen werden
+                entsprechende Links nach Prüfung entfernt.
+            </p>
+
+        </section>
+
+
+        <!-- DATENSCHUTZ -->
+
+        <section data-content="datenschutz" hidden>
+
+            <h2>Datenschutzerklärung</h2>
+
+            <h3>1. Verantwortlicher</h3>
+
+            <p>
+                Brandon Förderer
+                <br>
+                [Vollständige Anschrift ergänzen]
+                <br>
+                E-Mail: [E-Mail-Adresse ergänzen]
+            </p>
+
+            <h3>2. Hosting</h3>
+
+            <p>
+                Diese Website wird über einen Hosting-Anbieter
+                bereitgestellt. Bitte ergänze hier den Namen und
+                die Anschrift deines tatsächlichen Hosting-Anbieters
+                sowie die Informationen zur Datenverarbeitung.
+            </p>
+
+            <h3>3. Server-Logfiles</h3>
+
+            <p>
+                Beim Aufruf dieser Website können durch den
+                Hosting-Anbieter technische Informationen
+                verarbeitet werden. Dazu können insbesondere
+                IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp,
+                Betriebssystem und aufgerufene Seiten gehören.
+            </p>
+
+            <p>
+                Die tatsächliche Speicherung, Speicherdauer
+                und Rechtsgrundlage sind anhand der Bedingungen
+                deines Hosting-Anbieters zu ergänzen.
+            </p>
+
+            <h3>4. Cookies und externe Dienste</h3>
+
+            <p>
+                Hier müssen gegebenenfalls eingesetzte Cookies,
+                externe Schriftarten, Analysewerkzeuge,
+                eingebundene Medien und weitere Dienste
+                aufgeführt werden.
+            </p>
+
+            <h3>5. Deine Rechte</h3>
+
+            <p>
+                Du hast im Rahmen der gesetzlichen Voraussetzungen
+                insbesondere Rechte auf Auskunft, Berichtigung,
+                Löschung, Einschränkung der Verarbeitung und
+                Beschwerde bei einer Datenschutzaufsichtsbehörde.
+            </p>
+
+            <h3>6. Kontakt</h3>
+
+            <p>
+                Bei Fragen zum Datenschutz kannst du dich an
+                die oben genannte verantwortliche Stelle wenden.
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section data-content="contact" hidden>
+
+            <h2>Contact</h2>
+
+            <p>
+                Für Fragen, Anregungen und Kooperationen
+                kannst du mich gerne kontaktieren.
+            </p>
+
+            <h3>E-Mail</h3>
+
+            <p>
+                <a href="mailto:brandon@foerderer.art">
+                    brandon@foerderer.art
+                </a>
+            </p>
+
+            <h3>Location</h3>
+
+            <p>
+                Frankfurt am Main
+            </p>
+
+        </section>
+
+
+        <!-- IMAGE INFORMATION — FUTURE USE -->
+
+        <section data-content="image" hidden>
+
+            <h2>Image Information</h2>
+
+            <p id="image-description">
+                Bildinformationen werden hier angezeigt.
+            </p>
+
+            <p id="image-credit">
+                Bildnachweis
+            </p>
+
+        </section>
+
+
+    </div>
+
+</dialog>
+
+
+<!-- =================================
+     JAVASCRIPT — WINDOW SYSTEM
+================================= -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const windowElement = document.getElementById("info-window");
+        const windowTitle = document.getElementById("window-title");
+        const windowClose = document.getElementById("window-close");
+        const windowSections = document.querySelectorAll("[data-content]");
+
+        const windowNames = {
+            impressum: "IMPRESSUM / 001",
+            datenschutz: "DATENSCHUTZ / 002",
+            contact: "CONTACT / 003",
+            image: "IMAGE INFORMATION"
+        };
+
+
+        /* OPEN WINDOW */
+
+        function openWindow(name) {
+
+            const selectedSection = document.querySelector(
+                `[data-content="${name}"]`
+            );
+
+            if (!selectedSection || !windowElement) return;
+
+            windowSections.forEach(section => {
+                section.hidden = true;
+            });
+
+            selectedSection.hidden = false;
+
+            windowTitle.textContent =
+                windowNames[name] || "INFORMATION";
+
+            if (!windowElement.open) {
+                windowElement.showModal();
+            }
+
+            document.body.classList.add("modal-open");
+        }
+
+
+        /* CLOSE WINDOW */
+
+        function closeWindow() {
+
+            if (windowElement.open) {
+                windowElement.close();
+            }
+
+            document.body.classList.remove("modal-open");
+        }
+
+
+        /* OPEN BUTTONS */
+
+        document.addEventListener("click", event => {
+
+            const trigger = event.target.closest("[data-window]");
+
+            if (!trigger) return;
+
+            event.preventDefault();
+
+            openWindow(trigger.dataset.window);
+        });
+
+
+        /* CLOSE BUTTON */
+
+        windowClose.addEventListener("click", closeWindow);
+
+
+        /* ESCAPE / DIALOG CLOSE */
+
+        windowElement.addEventListener("close", () => {
+            document.body.classList.remove("modal-open");
+        });
+
+        windowElement.addEventListener("cancel", () => {
+            document.body.classList.remove("modal-open");
+        });
+
+
+        /* CLICK OUTSIDE */
+
+        windowElement.addEventListener("click", event => {
+
+            if (event.target === windowElement) {
+                closeWindow();
+            }
+        });
+
+
+        /* IMAGE INFORMATION */
+
+        window.openImageInfo = function(description, credit) {
+
+            document.getElementById("image-description").textContent =
+                description;
+
+            document.getElementById("image-credit").textContent =
+                credit;
+
+            openWindow("image");
+        };
+
+    });
+
+</script>
 
 </body>
 </html>
