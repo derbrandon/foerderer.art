@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -17,16 +16,11 @@
         ================================= */
 
         :root {
-
-            /* COLORS */
-
             --background: #F8FEE6;
             --foreground: #000000;
             --accent: #83FA6C;
             --grid-color: #E1E3DC;
             --muted: #777777;
-
-            /* TYPOGRAPHY */
 
             --font-main: "Menlo", "Monaco", monospace;
 
@@ -34,11 +28,7 @@
             --heading-size: 18px;
             --display-size: 36px;
 
-            /* GRID */
-
             --grid-unit: 40px;
-
-            /* SPACING */
 
             --space-xs: 4px;
             --space-s: 8px;
@@ -48,11 +38,8 @@
             --space-xxl: 40px;
             --space-section: 80px;
 
-            /* LAYOUT */
-
             --page-margin: 40px;
             --content-width: 1440px;
-
         }
 
 
@@ -71,10 +58,8 @@
         body {
             margin: 0;
             padding: 0;
-
             background: var(--background);
             color: var(--foreground);
-
             font-family: var(--font-main);
             font-size: var(--text-size);
             line-height: 1.6;
@@ -105,14 +90,10 @@
         ================================= */
 
         .site-wrapper {
-
             position: relative;
-
             width: 100%;
             min-height: 100vh;
-
             max-width: var(--content-width);
-
             margin: 0 auto;
             padding: 0 var(--page-margin);
 
@@ -128,11 +109,8 @@
                     transparent 1px
                 );
 
-            background-size:
-                var(--grid-unit) var(--grid-unit);
-
+            background-size: var(--grid-unit) var(--grid-unit);
             background-position: 0 0;
-
         }
 
 
@@ -141,70 +119,46 @@
         ================================= */
 
         header {
-
             display: grid;
-
             grid-template-columns: repeat(12, 1fr);
-
             align-items: center;
-
             min-height: 80px;
-
             border-bottom: 1px solid var(--foreground);
-
         }
 
         .logo {
-
             grid-column: span 4;
-
             font-size: var(--heading-size);
             font-weight: 700;
-
             letter-spacing: -1px;
-
         }
 
         nav {
-
             grid-column: span 8;
-
             display: flex;
-
             justify-content: flex-end;
             align-items: center;
-
             gap: 24px;
-
             flex-wrap: wrap;
-
         }
 
         nav a,
         .nav-button {
-
             font-size: var(--text-size);
-
             color: var(--foreground);
-
             transition: color 0.2s ease;
-
         }
 
         nav a:hover,
         .nav-button:hover {
-
             color: var(--accent);
-
         }
 
         .nav-button {
-
             padding: 0;
             border: none;
             background: transparent;
             cursor: pointer;
-
         }
 
 
@@ -213,42 +167,27 @@
         ================================= */
 
         main {
-
             display: grid;
-
             grid-template-columns: repeat(12, 1fr);
-
             min-height: 65vh;
-
             padding-top: var(--space-section);
             padding-bottom: var(--space-section);
-
         }
 
         .intro {
-
             grid-column: 2 / span 7;
-
             max-width: 760px;
-
         }
 
         .intro p {
-
             font-size: var(--text-size);
-
             line-height: 1.9;
-
             color: var(--foreground);
-
             margin: 0 0 24px 0;
-
         }
 
         .intro p:last-child {
-
             margin-bottom: 0;
-
         }
 
 
@@ -257,65 +196,43 @@
         ================================= */
 
         footer {
-
             display: grid;
-
             grid-template-columns: repeat(12, 1fr);
-
             align-items: center;
-
             min-height: 80px;
-
             border-top: 1px solid var(--foreground);
-
             font-size: 10px;
-
         }
 
         .footer-left {
-
             grid-column: span 6;
-
         }
 
         .footer-right {
-
             grid-column: span 6;
-
             display: flex;
-
             justify-content: flex-end;
-
             gap: 24px;
-
         }
 
         footer a,
         .footer-button {
-
             color: var(--foreground);
-
             transition: color 0.2s ease;
-
         }
 
         footer a:hover,
         .footer-button:hover {
-
             color: var(--accent);
-
         }
 
         .footer-button {
-
             border: none;
             padding: 0;
             background: transparent;
             cursor: pointer;
-
             font-family: inherit;
             font-size: inherit;
-
         }
 
 
@@ -324,47 +241,31 @@
         ================================= */
 
         .window {
-
             position: fixed;
-
             inset: 0;
-
             width: min(560px, calc(100% - 40px));
             max-width: 560px;
-
             max-height: min(680px, calc(100% - 40px));
-
             margin: auto;
             padding: 0;
-
             border: 1px solid var(--foreground);
-
             background: var(--background);
             color: var(--foreground);
-
             overflow: hidden;
-
         }
 
         .window[open] {
-
             display: flex;
             flex-direction: column;
-
             animation: windowFade 180ms ease both;
-
         }
 
         .window::backdrop {
-
             background: rgba(0, 0, 0, 0.30);
-
             animation: backdropFade 180ms ease both;
-
         }
 
         @keyframes windowFade {
-
             from {
                 opacity: 0;
             }
@@ -372,11 +273,9 @@
             to {
                 opacity: 1;
             }
-
         }
 
         @keyframes backdropFade {
-
             from {
                 background: rgba(0, 0, 0, 0);
             }
@@ -384,134 +283,90 @@
             to {
                 background: rgba(0, 0, 0, 0.30);
             }
-
         }
 
 
         /* WINDOW HEADER */
 
         .window-header {
-
             display: flex;
-
             justify-content: space-between;
             align-items: center;
-
             min-height: 40px;
-
             padding: 0 12px;
-
             background: var(--accent);
-
             border-bottom: 1px solid var(--foreground);
-
             flex-shrink: 0;
-
         }
 
         .window-title {
-
             font-size: 13px;
             font-weight: 700;
-
         }
 
         .window-close {
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             width: 24px;
             height: 24px;
-
             padding: 0;
-
             border: 1px solid var(--foreground);
-
             background: transparent;
-
             color: var(--foreground);
-
             cursor: pointer;
-
             font-size: 16px;
             line-height: 1;
-
             transition:
                 background 0.2s ease,
                 color 0.2s ease;
-
         }
 
         .window-close:hover {
-
             background: var(--foreground);
             color: var(--accent);
-
         }
 
 
         /* WINDOW CONTENT */
 
         .window-content {
-
             padding: 32px;
-
             overflow-y: auto;
-
             overscroll-behavior: contain;
-
         }
 
         .window-content h2 {
-
             font-size: var(--heading-size);
             font-weight: 700;
-
             margin: 0 0 24px 0;
-
         }
 
         .window-content h3 {
-
             font-size: var(--text-size);
             font-weight: 700;
-
             margin: 24px 0 8px 0;
-
         }
 
         .window-content p {
-
             font-size: var(--text-size);
             line-height: 1.8;
-
             margin: 0 0 16px 0;
-
         }
 
         .window-content a {
-
             text-decoration: underline;
             text-underline-offset: 3px;
-
         }
 
         .window-content a:hover {
-
             color: var(--muted);
-
         }
 
         .window-content section + section {
-
             border-top: 1px solid var(--grid-color);
-
             margin-top: 24px;
             padding-top: 8px;
-
         }
 
         .window-content [hidden] {
@@ -540,7 +395,6 @@
             .intro {
                 grid-column: 1 / span 9;
             }
-
         }
 
 
@@ -551,23 +405,16 @@
         @media (max-width: 700px) {
 
             :root {
-
                 --page-margin: 20px;
                 --space-section: 60px;
                 --display-size: 28px;
-
             }
 
             header {
-
                 grid-template-columns: 1fr;
-
                 align-items: flex-start;
-
                 padding: 20px 0;
-
                 gap: 20px;
-
             }
 
             .logo {
@@ -575,13 +422,9 @@
             }
 
             nav {
-
                 grid-column: 1;
-
                 justify-content: flex-start;
-
                 gap: 12px 20px;
-
             }
 
             nav a,
@@ -590,14 +433,10 @@
             }
 
             main {
-
                 grid-template-columns: repeat(4, 1fr);
-
                 min-height: auto;
-
                 padding-top: var(--space-section);
                 padding-bottom: var(--space-section);
-
             }
 
             .intro {
@@ -605,21 +444,14 @@
             }
 
             .intro p {
-
                 line-height: 1.8;
-
                 margin-bottom: 20px;
-
             }
 
             footer {
-
                 grid-template-columns: repeat(4, 1fr);
-
                 gap: 16px;
-
                 padding: 20px 0;
-
             }
 
             .footer-left {
@@ -627,29 +459,19 @@
             }
 
             .footer-right {
-
                 grid-column: span 2;
-
                 flex-wrap: wrap;
-
                 gap: 12px;
-
             }
 
             .window {
-
                 width: calc(100% - 24px);
-
                 max-height: calc(100% - 24px);
-
             }
 
             .window-content {
-
                 padding: 24px 20px;
-
             }
-
         }
 
 
@@ -665,13 +487,9 @@
 
             .footer-left,
             .footer-right {
-
                 grid-column: 1 / -1;
-
                 justify-content: flex-start;
-
             }
-
         }
 
 
@@ -684,13 +502,10 @@
             *,
             *::before,
             *::after {
-
                 scroll-behavior: auto !important;
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
-
             }
-
         }
 
     </style>
@@ -847,26 +662,47 @@
             <p>
                 Brandon Förderer
                 <br>
-                [Vollständige ladungsfähige Anschrift ergänzen]
+                Münchener Straße 24
+                <br>
+                60329 Frankfurt am Main
             </p>
 
             <h3>Kontakt</h3>
 
             <p>
-                E-Mail: [E-Mail-Adresse ergänzen]
+                <a href="mailto:brandon@foerderer.art">
+                    brandon@foerderer.art
+                </a>
             </p>
 
-            <h3>Verantwortlich für den Inhalt</h3>
+            <h3>Haftung für Inhalte</h3>
 
             <p>
-                Brandon Förderer
-                <br>
-                [Vollständige Anschrift ergänzen]
+                Die Inhalte dieser Website werden mit Sorgfalt erstellt.
+                Für die Richtigkeit, Vollständigkeit und Aktualität
+                der Inhalte kann jedoch keine Gewähr übernommen werden.
             </p>
 
             <p>
-                Dies ist ein persönliches Informations- und
-                Portfolioangebot.
+                Gesetzliche Verpflichtungen zur Entfernung oder Sperrung
+                von Informationen bleiben hiervon unberührt.
+            </p>
+
+            <h3>Haftung für Links</h3>
+
+            <p>
+                Diese Website enthält gegebenenfalls Links zu externen
+                Websites Dritter, auf deren Inhalte kein Einfluss besteht.
+            </p>
+
+            <p>
+                Für die Inhalte verlinkter Seiten ist stets der jeweilige
+                Anbieter oder Betreiber verantwortlich.
+            </p>
+
+            <p>
+                Bei Bekanntwerden von Rechtsverletzungen werden
+                entsprechende Links nach Prüfung entfernt.
             </p>
 
         </section>
@@ -955,7 +791,9 @@
             <h3>E-Mail</h3>
 
             <p>
-                [Deine E-Mail-Adresse ergänzen]
+                <a href="mailto:brandon@foerderer.art">
+                    brandon@foerderer.art
+                </a>
             </p>
 
             <h3>Location</h3>
@@ -995,154 +833,114 @@
 
 <script>
 
-    /* =================================
-       01 — ELEMENTS
-    ================================= */
+    document.addEventListener("DOMContentLoaded", () => {
 
-    const windowElement = document.getElementById("info-window");
+        const windowElement = document.getElementById("info-window");
+        const windowTitle = document.getElementById("window-title");
+        const windowClose = document.getElementById("window-close");
+        const windowSections = document.querySelectorAll("[data-content]");
 
-    const windowTitle = document.getElementById("window-title");
-
-    const windowClose = document.getElementById("window-close");
-
-    const windowSections = document.querySelectorAll("[data-content]");
-
-
-    /* =================================
-       02 — WINDOW CONTENT
-    ================================= */
-
-    const windowNames = {
-
-        impressum: "IMPRESSUM / 001",
-
-        datenschutz: "DATENSCHUTZ / 002",
-
-        contact: "CONTACT / 003",
-
-        image: "IMAGE INFORMATION"
-
-    };
+        const windowNames = {
+            impressum: "IMPRESSUM / 001",
+            datenschutz: "DATENSCHUTZ / 002",
+            contact: "CONTACT / 003",
+            image: "IMAGE INFORMATION"
+        };
 
 
-    /* =================================
-       03 — OPEN WINDOW
-    ================================= */
+        /* OPEN WINDOW */
 
-    function openWindow(name) {
+        function openWindow(name) {
 
-        const selectedSection = document.querySelector(
-            `[data-content="${name}"]`
-        );
+            const selectedSection = document.querySelector(
+                `[data-content="${name}"]`
+            );
 
-        if (!selectedSection) {
-            return;
+            if (!selectedSection || !windowElement) return;
+
+            windowSections.forEach(section => {
+                section.hidden = true;
+            });
+
+            selectedSection.hidden = false;
+
+            windowTitle.textContent =
+                windowNames[name] || "INFORMATION";
+
+            if (!windowElement.open) {
+                windowElement.showModal();
+            }
+
+            document.body.classList.add("modal-open");
         }
 
-        /* Hide all other contents */
 
-        windowSections.forEach(section => {
-            section.hidden = true;
+        /* CLOSE WINDOW */
+
+        function closeWindow() {
+
+            if (windowElement.open) {
+                windowElement.close();
+            }
+
+            document.body.classList.remove("modal-open");
+        }
+
+
+        /* OPEN BUTTONS */
+
+        document.addEventListener("click", event => {
+
+            const trigger = event.target.closest("[data-window]");
+
+            if (!trigger) return;
+
+            event.preventDefault();
+
+            openWindow(trigger.dataset.window);
         });
 
-        /* Show selected content */
 
-        selectedSection.hidden = false;
+        /* CLOSE BUTTON */
 
-        /* Set window title */
-
-        windowTitle.textContent =
-            windowNames[name] || "INFORMATION";
-
-        /* Open dialog */
-
-        if (!windowElement.open) {
-            windowElement.showModal();
-        }
-
-        document.body.classList.add("modal-open");
-
-    }
+        windowClose.addEventListener("click", closeWindow);
 
 
-    /* =================================
-       04 — CLOSE WINDOW
-    ================================= */
+        /* ESCAPE / DIALOG CLOSE */
 
-    function closeWindow() {
-
-        if (windowElement.open) {
-            windowElement.close();
-        }
-
-        document.body.classList.remove("modal-open");
-
-    }
-
-
-    /* =================================
-       05 — OPEN BUTTONS
-    ================================= */
-
-    document.querySelectorAll("[data-window]").forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const windowName = button.dataset.window;
-
-            openWindow(windowName);
-
+        windowElement.addEventListener("close", () => {
+            document.body.classList.remove("modal-open");
         });
 
-    });
+        windowElement.addEventListener("cancel", () => {
+            document.body.classList.remove("modal-open");
+        });
 
 
-    /* =================================
-       06 — CLOSE BUTTON
-    ================================= */
+        /* CLICK OUTSIDE */
 
-    windowClose.addEventListener("click", closeWindow);
+        windowElement.addEventListener("click", event => {
 
-
-    /* =================================
-       07 — ESCAPE / DIALOG CLOSE
-    ================================= */
-
-    windowElement.addEventListener("close", () => {
-
-        document.body.classList.remove("modal-open");
-
-    });
+            if (event.target === windowElement) {
+                closeWindow();
+            }
+        });
 
 
-    /* =================================
-       08 — CLICK OUTSIDE
-    ================================= */
+        /* IMAGE INFORMATION */
 
-    windowElement.addEventListener("click", event => {
+        window.openImageInfo = function(description, credit) {
 
-        if (event.target === windowElement) {
-            closeWindow();
-        }
+            document.getElementById("image-description").textContent =
+                description;
+
+            document.getElementById("image-credit").textContent =
+                credit;
+
+            openWindow("image");
+        };
 
     });
-
-
-    /* =================================
-       09 — IMAGE INFORMATION
-    ================================= */
-
-    function openImageInfo(description, credit) {
-
-        document.getElementById("image-description").textContent =
-            description;
-
-        document.getElementById("image-credit").textContent =
-            credit;
-
-        openWindow("image");
-
-    }
 
 </script>
 
