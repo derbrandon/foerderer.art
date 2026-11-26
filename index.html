@@ -6,119 +6,439 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Die persönliche Website von Brandon Förderer. Ein digitales Archiv für Projekte, Gedanken, Ideen und Fotografie.">
+
     <title>Brandon Förderer</title>
 
     <style>
 
-        /* GENERAL */
+        /* =================================
+           01 — DESIGN SYSTEM
+        ================================= */
+
+        :root {
+
+            /* COLORS */
+
+            --background: #F8FEE6;
+            --foreground: #000000;
+            --accent: #83FA6C;
+            --grid-color: #E1E3DC;
+            --muted: #777777;
+
+            /* TYPOGRAPHY */
+
+            --font-main: "Menlo", "Monaco", monospace;
+
+            --text-size: 13px;
+            --heading-size: 18px;
+            --display-size: 36px;
+
+            /* GRID */
+
+            --grid-unit: 20px;
+
+            /* SPACING */
+
+            --space-xs: 4px;
+            --space-s: 8px;
+            --space-m: 16px;
+            --space-l: 20px;
+            --space-xl: 24px;
+            --space-xxl: 40px;
+            --space-section: 80px;
+
+            /* LAYOUT */
+
+            --page-margin: 40px;
+            --content-width: 1440px;
+
+        }
+
+
+        /* =================================
+           02 — GENERAL
+        ================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            background: #F8FEE6;
-            color: #222;
-            font-family: Georgia, "Times New Roman", serif;
             margin: 0;
-            padding: 0 10%;
+            padding: 0;
+
+            background: var(--background);
+            color: var(--foreground);
+
+            font-family: var(--font-main);
+            font-size: var(--text-size);
+            line-height: 1.6;
         }
 
         a {
-            color: #222;
+            color: var(--foreground);
             text-decoration: none;
         }
 
+        a:focus-visible {
+            outline: 1px solid var(--foreground);
+            outline-offset: 4px;
+        }
 
-        /* HEADER */
+
+        /* =================================
+           03 — PAGE GRID
+        ================================= */
+
+        .site-wrapper {
+
+            position: relative;
+
+            width: 100%;
+            min-height: 100vh;
+
+            max-width: var(--content-width);
+
+            margin: 0 auto;
+            padding: 0 var(--page-margin);
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    var(--grid-color) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    var(--grid-color) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                var(--grid-unit) var(--grid-unit);
+
+            background-position: 0 0;
+
+        }
+
+
+        /* =================================
+           04 — HEADER
+        ================================= */
 
         header {
-            display: flex;
-            justify-content: space-between;
+
+            display: grid;
+
+            grid-template-columns: repeat(12, 1fr);
+
             align-items: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #ddd9d1;
+
+            min-height: 80px;
+
+            border-bottom: 1px solid var(--foreground);
+
         }
 
         .logo {
-            font-size: 18px;
-            color: #222;
+
+            grid-column: span 4;
+
+            font-size: var(--heading-size);
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
         }
 
         nav {
+
+            grid-column: span 8;
+
             display: flex;
+
+            justify-content: flex-end;
+            align-items: center;
+
             gap: 24px;
+
             flex-wrap: wrap;
+
         }
 
         nav a {
-            font-size: 14px;
-            color: #666;
-            transition: color 0.2s;
+
+            font-size: var(--text-size);
+
+            color: var(--foreground);
+
+            transition: color 0.2s ease;
+
         }
 
         nav a:hover {
-            color: #222;
+
+            color: var(--accent);
+
         }
 
 
-        /* MAIN */
+        /* =================================
+           05 — MAIN CONTENT
+        ================================= */
 
         main {
-            max-width: 700px;
-            padding: 100px 0;
+
+            display: grid;
+
+            grid-template-columns: repeat(12, 1fr);
+
+            min-height: 65vh;
+
+            padding-top: var(--space-section);
+            padding-bottom: var(--space-section);
+
+        }
+
+        .intro {
+
+            grid-column: 2 / span 7;
+
+            max-width: 760px;
+
+        }
+
+        .intro h1 {
+
+            font-size: var(--display-size);
+
+            font-weight: 400;
+
+            line-height: 1.3;
+
+            margin: 0 0 40px 0;
+
+            letter-spacing: -1.5px;
+
         }
 
         .intro p {
-            font-size: 17px;
+
+            font-size: var(--text-size);
+
             line-height: 1.9;
-            color: #666;
-            margin-bottom: 24px;
+
+            color: var(--foreground);
+
+            margin: 0 0 24px 0;
+
+        }
+
+        .intro p:last-child {
+
+            margin-bottom: 0;
+
         }
 
 
-        /* FOOTER */
+        /* =================================
+           06 — FOOTER
+        ================================= */
 
         footer {
-            display: flex;
-            justify-content: space-between;
+
+            display: grid;
+
+            grid-template-columns: repeat(12, 1fr);
+
             align-items: center;
-            margin-top: 100px;
-            padding: 30px 0;
-            border-top: 1px solid #ddd9d1;
-            font-size: 14px;
-            color: #666;
+
+            min-height: 80px;
+
+            border-top: 1px solid var(--foreground);
+
+            font-size: 10px;
+
+        }
+
+        .footer-left {
+
+            grid-column: span 6;
+
+        }
+
+        .footer-right {
+
+            grid-column: span 6;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 24px;
+
         }
 
         footer a {
-            color: #666;
+
+            color: var(--foreground);
+
+            transition: color 0.2s ease;
+
         }
 
         footer a:hover {
-            color: #222;
+
+            color: var(--accent);
+
         }
 
 
-        /* MOBILE */
+        /* =================================
+           07 — RESPONSIVE TABLET
+        ================================= */
 
-        @media (max-width: 700px) {
-
-            body {
-                padding: 0 6%;
-            }
-
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
+        @media (max-width: 900px) {
 
             nav {
                 gap: 16px;
             }
 
+            .logo {
+                grid-column: span 3;
+            }
+
+            nav {
+                grid-column: span 9;
+            }
+
+            .intro {
+                grid-column: 1 / span 9;
+            }
+
+        }
+
+
+        /* =================================
+           08 — RESPONSIVE MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            :root {
+
+                --page-margin: 20px;
+                --space-section: 60px;
+                --display-size: 28px;
+
+            }
+
+            header {
+
+                grid-template-columns: 1fr;
+
+                align-items: flex-start;
+
+                padding: 20px 0;
+
+                gap: 20px;
+
+            }
+
+            .logo {
+                grid-column: 1;
+            }
+
+            nav {
+
+                grid-column: 1;
+
+                justify-content: flex-start;
+
+                gap: 12px 20px;
+
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
             main {
-                padding: 70px 0;
+
+                grid-template-columns: repeat(4, 1fr);
+
+                min-height: auto;
+
+                padding-top: var(--space-section);
+                padding-bottom: var(--space-section);
+
+            }
+
+            .intro {
+                grid-column: 1 / -1;
+            }
+
+            .intro h1 {
+                margin-bottom: 32px;
             }
 
             .intro p {
-                font-size: 16px;
+
+                line-height: 1.8;
+
+                margin-bottom: 20px;
+
+            }
+
+            footer {
+
+                grid-template-columns: repeat(4, 1fr);
+
+                gap: 16px;
+
+                padding: 20px 0;
+
+            }
+
+            .footer-left {
+                grid-column: span 2;
+            }
+
+            .footer-right {
+
+                grid-column: span 2;
+
+                flex-wrap: wrap;
+
+                gap: 12px;
+
+            }
+
+        }
+
+
+        /* =================================
+           09 — SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            nav {
+                gap: 10px 14px;
+            }
+
+            .footer-left,
+            .footer-right {
+
+                grid-column: 1 / -1;
+
+                justify-content: flex-start;
+
             }
 
         }
@@ -127,30 +447,50 @@
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+<div class="site-wrapper">
+
+
+    <!-- =================================
+         HEADER
+    ================================= -->
 
     <header>
 
-        <a class="logo" href="/">Brandon Förderer</a>
+        <a class="logo" href="/">
+            Brandon Förderer
+        </a>
 
-        <nav>
+        <nav aria-label="Hauptnavigation">
+
             <a href="/">Home</a>
+
             <a href="/projects/">Projects</a>
+
             <a href="/photography/">Photography</a>
+
             <a href="/flappy-bird/">Flappy Bird</a>
+
             <a href="/contact/">Contact</a>
+
         </nav>
 
     </header>
 
 
-    <!-- HOME -->
+    <!-- =================================
+         HOME
+    ================================= -->
 
     <main>
 
         <section class="intro">
+
+            <h1>
+                Brandon Förderer
+            </h1>
 
             <p>
                 Hallo, mein Name ist Brandon Förderer.
@@ -181,15 +521,28 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =================================
+         FOOTER
+    ================================= -->
 
     <footer>
 
-        <span>© Brandon Förderer</span>
+        <div class="footer-left">
+            © Brandon Förderer
+        </div>
 
-        <a href="/impressum.html">Impressum</a>
+        <div class="footer-right">
+
+            <a href="/impressum.html">
+                Impressum
+            </a>
+
+        </div>
 
     </footer>
+
+
+</div>
 
 </body>
 </html>
